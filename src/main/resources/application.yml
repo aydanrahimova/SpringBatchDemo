@@ -1,0 +1,21 @@
+server:
+  port: 8181
+spring:
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false #otherwise job will start at application startup
+  jpa:
+    hibernate:
+      ddl-auto: validate #checks for similarities of entity class with table(without making any modifications - just in mismatching throw error)
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:5435/spring_batch_demo_db
+    username: postgres
+    password: postgres
+logging:
+  level:
+    root: info
